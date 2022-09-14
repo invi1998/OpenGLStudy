@@ -107,8 +107,8 @@ public:
 	}
 
 	/**
-*   交换缓冲区
-*/
+	*   交换缓冲区
+	*/
 	void    swapBuffer()
 	{
 		SwapBuffers(_hDC);
