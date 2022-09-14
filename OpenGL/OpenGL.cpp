@@ -17,20 +17,6 @@ LRESULT CALLBACK  wndProc(HWND hWnd, UINT msgId, WPARAM wParam, LPARAM lParam)
 	}
 	return  0;
 }
-//
-//严重性	代码	说明	项目	文件	行	禁止显示状态
-//错误	MSB4018	“VCMessage”任务意外失败。
-//System.FormatException: 索引(从零开始)必须大于或等于零，且小于参数列表的大小。
-//在 System.Text.StringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ParamsArray args)
-//在 System.String.FormatHelper(IFormatProvider provider, String format, ParamsArray args)
-//在 System.String.Format(IFormatProvider provider, String format, Object[] args)
-//在 Microsoft.Build.Shared.ResourceUtilities.FormatString(String unformatted, Object[] args)
-//在 Microsoft.Build.Utilities.TaskLoggingHelper.FormatString(String unformatted, Object[] args)
-//在 Microsoft.Build.Utilities.TaskLoggingHelper.FormatResourceString(String resourceName, Object[] args)
-//在 Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningWithCodeFromResources(String messageResourceName, Object[] messageArgs)
-//在 Microsoft.Build.CPPTasks.VCMessage.Execute()
-//在 Microsoft.Build.BackEnd.TaskExecutionHost.Microsoft.Build.BackEnd.ITaskExecutionHost.Execute()
-//在 Microsoft.Build.BackEnd.TaskBuilder.<ExecuteInstantiatedTask>d__26.MoveNext()	OpenGL	C : \Program Files(x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets	1363
 
 int __stdcall WinMain(
 	HINSTANCE hInstance,
