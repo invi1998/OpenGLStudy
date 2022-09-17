@@ -17,6 +17,35 @@ LRESULT CALLBACK  wndProc(HWND hWnd, UINT msgId, WPARAM wParam, LPARAM lParam)
 	}
 	return  0;
 }
+
+void ChangeToFullScreen(int w, int h)
+{
+	// 声明一个针对屏幕显示器的设置
+	DEVMODE dmSettings = { 0 };
+
+	/*
+	 * 枚举设备模式
+	 * 有些设备没有装显卡驱动，就不能枚举，所以这里需要判断枚举结果
+	 */
+	if (!EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &dmSettings))
+	{
+		MessageBox(NULL, _T("Could Not Enum Display Settings"), _T("Error"), MB_OK);
+		return;
+	}
+
+	dmSettings.dmPelsWidth = w;
+	dmSettings.dmPelsHeight = h;
+	dmSettings.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
+
+	int result = ChangeDisplaySettings(&dmSettings, CDS_FULLSCREEN);
+
+	if (result != DISP_CHANGE_SUCCESSFUL)
+	{
+		MessageBox(NULL, _T("Display Mode Not Compatible"), _T("Error"), MB_OK);
+		PostQuitMessage(0);
+	}
+}
+
 int __stdcall WinMain(
 	HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
@@ -55,6 +84,8 @@ int __stdcall WinMain(
 		, 0
 		, hInstance
 		, 0);
+
+	ChangeToFullScreen(1600, 900);
 
 	//!3    更新显示
 	if (hWnd)
