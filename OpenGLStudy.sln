@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL_MFC_MDI", "OpenGL_MF
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL_ES2", "OpenGL_ES2\OpenGL_ES2.vcxproj", "{AE238857-FEB9-459D-9CCA-743DD5FF2791}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtOpenGL", "QtOpenGL\QtOpenGL.vcxproj", "{A9A98BB1-C630-4A97-8205-BC66A08D7D32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +73,12 @@ Global
 		{AE238857-FEB9-459D-9CCA-743DD5FF2791}.Release|x64.Build.0 = Release|x64
 		{AE238857-FEB9-459D-9CCA-743DD5FF2791}.Release|x86.ActiveCfg = Release|Win32
 		{AE238857-FEB9-459D-9CCA-743DD5FF2791}.Release|x86.Build.0 = Release|Win32
+		{A9A98BB1-C630-4A97-8205-BC66A08D7D32}.Debug|x64.ActiveCfg = Debug|x64
+		{A9A98BB1-C630-4A97-8205-BC66A08D7D32}.Debug|x64.Build.0 = Debug|x64
+		{A9A98BB1-C630-4A97-8205-BC66A08D7D32}.Debug|x86.ActiveCfg = Debug|x64
+		{A9A98BB1-C630-4A97-8205-BC66A08D7D32}.Release|x64.ActiveCfg = Release|x64
+		{A9A98BB1-C630-4A97-8205-BC66A08D7D32}.Release|x64.Build.0 = Release|x64
+		{A9A98BB1-C630-4A97-8205-BC66A08D7D32}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
