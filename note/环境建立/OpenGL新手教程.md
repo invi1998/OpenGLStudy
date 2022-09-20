@@ -116,7 +116,7 @@ glutMainLoop()
 
 **先上代码**
 
-```c++
+```python
 # -*- coding: utf-8 -*-
 from OpenGL.GL import *
 from OpenGL.GLU import *

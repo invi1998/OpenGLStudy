@@ -1,0 +1,4 @@
+<RCC>
+    <qresource prefix="QtWidgetsOpenGL">
+    </qresource>
+</RCC>
