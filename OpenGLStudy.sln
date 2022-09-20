@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL_ES2", "OpenGL_ES2\Op
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtWidgetsOpenGL", "QtWidgetsOpenGL\QtWidgetsOpenGL.vcxproj", "{BB3DDD2E-CC2C-439F-85E7-758C7953DDBC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtWidgetsOpenGL_ES", "QtWidgetsOpenGL_ES\QtWidgetsOpenGL_ES.vcxproj", "{F29AFC7E-CE6D-458D-B4ED-3B6F46998A3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -79,6 +81,12 @@ Global
 		{BB3DDD2E-CC2C-439F-85E7-758C7953DDBC}.Release|x64.ActiveCfg = Release|x64
 		{BB3DDD2E-CC2C-439F-85E7-758C7953DDBC}.Release|x64.Build.0 = Release|x64
 		{BB3DDD2E-CC2C-439F-85E7-758C7953DDBC}.Release|x86.ActiveCfg = Release|x64
+		{F29AFC7E-CE6D-458D-B4ED-3B6F46998A3C}.Debug|x64.ActiveCfg = Debug|x64
+		{F29AFC7E-CE6D-458D-B4ED-3B6F46998A3C}.Debug|x64.Build.0 = Debug|x64
+		{F29AFC7E-CE6D-458D-B4ED-3B6F46998A3C}.Debug|x86.ActiveCfg = Debug|x64
+		{F29AFC7E-CE6D-458D-B4ED-3B6F46998A3C}.Release|x64.ActiveCfg = Release|x64
+		{F29AFC7E-CE6D-458D-B4ED-3B6F46998A3C}.Release|x64.Build.0 = Release|x64
+		{F29AFC7E-CE6D-458D-B4ED-3B6F46998A3C}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
