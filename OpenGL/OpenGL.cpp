@@ -35,18 +35,34 @@ public:
 		_circle[0].y = cy;
 		_circle[0].z = cz;
 
-		for (int i = 0; i <= 360; ++i)
+		// GL_TRIANGLE_STRIP（三角形带）
+		float3 rect[] = {
+			{10, 10, 0},
+			{110, 10, 0},
+			{10, 110, 0},
+			{110, 110, 0}
+		};
+
+		/*for (int i = 0; i <= 360; ++i)
 		{
 			_circle[i].x = (float)cos((double)i * M_PI / 180) * cr + cx;
 			_circle[i].y = (float)sin((double)i * M_PI / 180) * cr + cy;
 			_circle[i].z = cz;
-		}
+		}*/
+		//// 启用顶点数组
+		//glEnableClientState(GL_VERTEX_ARRAY);
+		//// 绑定顶点数据 大小、类型、步幅 数据指针
+		//glVertexPointer(3, GL_FLOAT, sizeof(float3), _circle);
+		//// 调用 drawArray
+		//glDrawArrays(GL_TRIANGLE_FAN, 0, 362);
+
+		glColor3f(1, 0, 1);
 		// 启用顶点数组
 		glEnableClientState(GL_VERTEX_ARRAY);
 		// 绑定顶点数据 大小、类型、步幅 数据指针
-		glVertexPointer(3, GL_FLOAT, sizeof(float3), _circle);
+		glVertexPointer(3, GL_FLOAT, sizeof(float3), rect);
 		// 调用 drawArray
-		glDrawArrays(GL_TRIANGLE_FAN, 0, 362);
+		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 	}
 };
 
