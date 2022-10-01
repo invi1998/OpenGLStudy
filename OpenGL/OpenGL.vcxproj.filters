@@ -18,9 +18,15 @@
     <ClInclude Include="GLContext.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="OpenGLWindow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGL.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

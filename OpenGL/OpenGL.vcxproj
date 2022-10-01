@@ -148,9 +148,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GLContext.h" />
+    <ClInclude Include="OpenGLWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGL.cpp" />
+    <ClCompile Include="OpenGLWindow.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
