@@ -5,9 +5,6 @@
 class SamplerTriangle : public OpenGLWindow
 {
 public:
-	SamplerTriangle(HINSTANCE hins) :OpenGLWindow(hins)
-	{
-	}
 	void render() override
 	{
 		// 指定矩阵模式，这里传递 GL_PROJECTION 是告诉OpenGL我现在想操作的是 投影
@@ -36,8 +33,8 @@ int __stdcall WinMain(
 	int nShowCmd
 )
 {
-	OpenGLWindow* instance = new SamplerTriangle(hInstance);
-	instance->main(1000, 1000);
+	SamplerTriangle instance;
+	instance.main(1000, 1000);
 
 	return  0;
 }
