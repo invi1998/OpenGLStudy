@@ -14,7 +14,7 @@ public:
 		float x, y, z;
 	};
 
-	float3 _circle[360 * 3];
+	float3 _circle[362];
 
 	void render() override
 	{
@@ -31,26 +31,22 @@ public:
 		float cz = 0;
 		float cr = 200;
 
-		for (int i = 0; i < 360; ++i)
+		_circle[0].x = cx;
+		_circle[0].y = cy;
+		_circle[0].z = cz;
+
+		for (int i = 0; i <= 360; ++i)
 		{
-			_circle[i * 3 + 0].x = cx;
-			_circle[i * 3 + 0].y = cy;
-			_circle[i * 3 + 0].z = cz;
-
-			_circle[i * 3 + 1].x = (float)cos((double)i * M_PI / 180) * cr + cx;
-			_circle[i * 3 + 1].y = (float)sin((double)i * M_PI / 180) * cr + cy;
-			_circle[i * 3 + 1].z = cz;
-
-			_circle[i * 3 + 2].x = (float)cos((double)(i + 1) * M_PI / 180) * cr + cx;
-			_circle[i * 3 + 2].y = (float)sin((double)(i + 1) * M_PI / 180) * cr + cy;
-			_circle[i * 3 + 2].z = cz;
+			_circle[i].x = (float)cos((double)i * M_PI / 180) * cr + cx;
+			_circle[i].y = (float)sin((double)i * M_PI / 180) * cr + cy;
+			_circle[i].z = cz;
 		}
 		// 启用顶点数组
 		glEnableClientState(GL_VERTEX_ARRAY);
 		// 绑定顶点数据 大小、类型、步幅 数据指针
 		glVertexPointer(3, GL_FLOAT, sizeof(float3), _circle);
 		// 调用 drawArray
-		glDrawArrays(GL_TRIANGLES, 0, 3 * 360);
+		glDrawArrays(GL_TRIANGLE_FAN, 0, 362);
 	}
 };
 
