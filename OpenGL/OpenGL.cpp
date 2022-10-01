@@ -1,6 +1,10 @@
 #include <windows.h>
 #include <tchar.h>
+#include <math.h>
+
+#include "GLContext.h"
 #include "OpenGLWindow.h"
+#include <corecrt_math_defines.h>
 
 class SamplerTriangle : public OpenGLWindow
 {
@@ -15,12 +19,25 @@ public:
 		// 指定正交投影空间,产生投影矩阵
 		glOrtho(0, _width, _height, 0, -100, 100);
 
-		glColor3f(1, 0, 1);
+		float cx = 500;
+		float cy = 500;
+		float cz = 0;
+		float cr = 200;
+
 		glBegin(GL_TRIANGLES);
 
-		glVertex3f(_width * 0.5f, 0, 0);
-		glVertex3f(_width, _height, 0);
-		glVertex3f(0, _height, 0);
+		for (int i = 0; i < 360; ++i)
+		{
+			float x = (float)cos((double)i * M_PI / 180) * cr + cx;
+			float y = (float)sin((double)i * M_PI / 180) * cr + cy;
+
+			float x1 = (float)cos((double)(i + 1) * M_PI / 180) * cr + cx;
+			float y1 = (float)sin((double)(i + 1) * M_PI / 180) * cr + cy;
+
+			glVertex3f(cx, cy, cz);
+			glVertex3f(x, y, cz);
+			glVertex3f(x1, y1, cz);
+		}
 
 		glEnd();
 	}
