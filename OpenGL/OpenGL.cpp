@@ -89,6 +89,9 @@ public:
 		float r, g, b;
 	};
 
+	vertex _circle[360 * 2];
+	vertex _circle_strip[361];
+
 	void render() override
 	{
 		glMatrixMode(GL_PROJECTION);
@@ -103,13 +106,57 @@ public:
 			{110, 110, 0, 1, 1, 0}
 		};
 
+		//glEnableClientState(GL_VERTEX_ARRAY);
+		//glEnableClientState(GL_COLOR_ARRAY);
+		//glVertexPointer(3, GL_FLOAT, sizeof(vertex), rect);
+		//glColorPointer(3, GL_FLOAT, sizeof(vertex), &rect[0].r);
+		////glDrawArrays(GL_LINES, 0, 4);
+		////glDrawArrays(GL_LINE_STRIP, 0, 4);
+		//glDrawArrays(GL_LINE_LOOP, 0, 5);
+
+		// 画圆
+		float cx = 500;
+		float cy = 500;
+		float cz = 0;
+		float r = 80;
+
+		// 圆的极坐标方程
+		// x = cos(@)*r + center_x
+		// y = sin(@)*r + center_y
+		// 采用 lines 画圆
+		/*for (int i = 0; i < 360; ++i)
+		{
+			_circle[i * 2 + 0].x = cos(double(i) * M_PI / 180) * r + cx;
+			_circle[i * 2 + 0].y = sin(double(i) * M_PI / 180) * r + cy;
+			_circle[i * 2 + 0].z = cz;
+			_circle[i * 2 + 0].r = 1;
+			_circle[i * 2 + 0].g = 1;
+			_circle[i * 2 + 0].b = 1;
+
+			_circle[i * 2 + 1].x = cos(double(i + 1) * M_PI / 180) * r + cx;
+			_circle[i * 2 + 1].y = sin(double(i + 1) * M_PI / 180) * r + cy;
+			_circle[i * 2 + 1].z = cz;
+			_circle[i * 2 + 1].r = 1;
+			_circle[i * 2 + 1].g = 1;
+			_circle[i * 2 + 1].b = 1;
+		}*/
+
+		// 采用 strip 画圆 、 loop 的话又可以少一个点（首尾相连）
+		for (int i = 0; i <= 360; ++i)
+		{
+			_circle_strip[i].x = cos(double(i) * M_PI / 180) * r + cx;
+			_circle_strip[i].y = sin(double(i) * M_PI / 180) * r + cy;
+			_circle_strip[i].z = cz;
+			_circle_strip[i].r = 1;
+			_circle_strip[i].g = 1;
+			_circle_strip[i].b = 1;
+		}
+
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_COLOR_ARRAY);
-		glVertexPointer(3, GL_FLOAT, sizeof(vertex), rect);
-		glColorPointer(3, GL_FLOAT, sizeof(vertex), &rect[0].r);
-		//glDrawArrays(GL_LINES, 0, 4);
-		//glDrawArrays(GL_LINE_STRIP, 0, 4);
-		glDrawArrays(GL_LINE_LOOP, 0, 5);
+		glVertexPointer(3, GL_FLOAT, sizeof(vertex), _circle_strip);
+		glColorPointer(3, GL_FLOAT, sizeof(vertex), &_circle_strip[0].r);
+		glDrawArrays(GL_LINE_STRIP, 0, sizeof(_circle_strip) / sizeof(_circle_strip[0]));
 	}
 };
 
