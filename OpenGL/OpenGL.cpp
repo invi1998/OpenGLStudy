@@ -79,6 +79,40 @@ public:
 	}
 };
 
+//  π”√OPenGLª≠œﬂ
+class SamplerLine : public OpenGLWindow
+{
+public:
+	struct vertex
+	{
+		float x, y, z;
+		float r, g, b;
+	};
+
+	void render() override
+	{
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, _width, _height, 0, -100, 100);
+
+		vertex rect[] = {
+			{10, 10, 0, 1, 1, 1},
+			{110, 10, 0, 1, 0, 1},
+			{401, 50, 0, 0, 1, 1},
+			{10, 110, 0, 0, 0, 1},
+			{110, 110, 0, 1, 1, 0}
+		};
+
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_COLOR_ARRAY);
+		glVertexPointer(3, GL_FLOAT, sizeof(vertex), rect);
+		glColorPointer(3, GL_FLOAT, sizeof(vertex), &rect[0].r);
+		//glDrawArrays(GL_LINES, 0, 4);
+		//glDrawArrays(GL_LINE_STRIP, 0, 4);
+		glDrawArrays(GL_LINE_LOOP, 0, 5);
+	}
+};
+
 int __stdcall WinMain(
 	HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
@@ -86,7 +120,8 @@ int __stdcall WinMain(
 	int nShowCmd
 )
 {
-	SamplerTriangle instance;
+	//SamplerTriangle instance;
+	SamplerLine instance;
 	instance.main(1000, 1000);
 
 	return  0;
