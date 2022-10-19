@@ -91,6 +91,7 @@ public:
 
 	vertex _circle[360 * 2];
 	vertex _circle_strip[361];
+	vertex _bezier[360];
 
 	void render() override
 	{
@@ -152,11 +153,35 @@ public:
 			_circle_strip[i].b = 1;
 		}
 
-		glEnableClientState(GL_VERTEX_ARRAY);
+		/*glEnableClientState(GL_VERTEX_ARRAY);
 		glEnableClientState(GL_COLOR_ARRAY);
 		glVertexPointer(3, GL_FLOAT, sizeof(vertex), _circle_strip);
 		glColorPointer(3, GL_FLOAT, sizeof(vertex), &_circle_strip[0].r);
-		glDrawArrays(GL_LINE_STRIP, 0, sizeof(_circle_strip) / sizeof(_circle_strip[0]));
+		glDrawArrays(GL_LINE_STRIP, 0, sizeof(_circle_strip) / sizeof(_circle_strip[0]));*/
+
+		// »æÖÆ±´Èû¶ûÇúÏß
+		vertex  p0 = { 100,10,0, 1, 1, 1 };
+		vertex  p1 = { 500,1000,0 , 1, 1, 1 };
+		vertex  p2 = { 650,40,0 , 1, 1, 1 };
+		vertex  p3 = { 900,900,0 , 1, 1, 1 };
+
+		int     indx = 0;
+		for (float t = 0; t < 1.0f; t += 0.01f, ++indx)
+		{
+			_bezier[indx].x = (1 - t) * (1 - t) * (1 - t) * p0.x + 3 * t * (1 - t) * (1 - t) * p1.x + 3 * t * t * (1 - t) * p2.x + t * t * t * p3.x;
+			_bezier[indx].y = (1 - t) * (1 - t) * (1 - t) * p0.y + 3 * t * (1 - t) * (1 - t) * p1.y + 3 * t * t * (1 - t) * p2.y + t * t * t * p3.y;
+			_bezier[indx].z = 0;
+
+			_bezier[indx].r = 1;
+			_bezier[indx].g = 0;
+			_bezier[indx].b = 1;
+		}
+
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_COLOR_ARRAY);
+		glVertexPointer(3, GL_FLOAT, sizeof(vertex), _bezier);
+		glColorPointer(3, GL_FLOAT, sizeof(vertex), &_bezier[0].r);
+		glDrawArrays(GL_LINE_STRIP, 0, indx - 1);
 	}
 };
 
